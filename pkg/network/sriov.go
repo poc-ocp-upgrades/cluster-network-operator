@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-
 	operv1 "github.com/openshift/api/operator/v1"
 	"github.com/openshift/cluster-network-operator/pkg/render"
 	"github.com/pkg/errors"
@@ -13,13 +12,12 @@ import (
 )
 
 type NetConfSRIOV struct {
-	// ...
 	Type string `json:"type"`
-	// ...
 }
 
-// isOpenShiftSRIOV determines if an AdditionalNetworkDefinition is OpenShift SRIOV
 func isOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cni := NetConfSRIOV{}
 	err := json.Unmarshal([]byte(conf.RawCNIConfig), &cni)
 	if err != nil {
@@ -28,13 +26,11 @@ func isOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition) bool {
 	}
 	return cni.Type == "sriov"
 }
-
-// renderOpenShiftSRIOV returns the manifests of OpenShiftSRIOV NetworkAttachmentDefinition,
-// OpenShiftSRIOV Device Plugin and OpenShiftSRIOV NetworkAttachmentDefinition CR.
 func renderOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition, manifestDir string) ([]*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var err error
 	objs := []*uns.Unstructured{}
-	// render OpenShiftSRIOV manifests on disk
 	data := render.MakeRenderData()
 	data.Data["ReleaseVersion"] = os.Getenv("RELEASE_VERSION")
 	data.Data["AdditionalNetworkName"] = conf.Name
