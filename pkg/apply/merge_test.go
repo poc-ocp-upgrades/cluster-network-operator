@@ -11,6 +11,8 @@ import (
 func TestMergeNamespace(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cur := UnstructuredFromYaml(t, `
 apiVersion: v1
@@ -40,6 +42,8 @@ metadata:
 	g.Expect(upd.GetAnnotations()).To(Equal(map[string]string{"a": "upd", "b": "cur", "c": "upd"}))
 }
 func TestMergeDeployment(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -75,6 +79,8 @@ metadata:
 func TestMergeNilCur(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cur := UnstructuredFromYaml(t, `
 apiVersion: apps/v1
@@ -100,6 +106,8 @@ metadata:
 func TestMergeNilMeta(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cur := UnstructuredFromYaml(t, `
 apiVersion: apps/v1
@@ -116,6 +124,8 @@ metadata:
 	g.Expect(upd.GetLabels()).To(BeEmpty())
 }
 func TestMergeNilUpd(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -143,6 +153,8 @@ metadata:
 func TestMergeService(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cur := UnstructuredFromYaml(t, `
 apiVersion: v1
@@ -165,6 +177,8 @@ spec:
 	g.Expect(ip).To(Equal("cur"))
 }
 func TestMergeServiceAccount(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -193,6 +207,8 @@ metadata:
 	g.Expect(s).To(ConsistOf("foo"))
 }
 func UnstructuredFromYaml(t *testing.T, obj string) *uns.Unstructured {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	t.Helper()

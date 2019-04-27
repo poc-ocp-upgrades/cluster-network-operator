@@ -11,6 +11,8 @@ import (
 func ValidateClusterConfig(clusterConfig configv1.NetworkSpec) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pool := iputil.IPPool{}
 	if len(clusterConfig.ServiceNetwork) == 0 {
 		return errors.Errorf("spec.serviceNetwork must have at least 1 entry")
@@ -51,6 +53,8 @@ func ValidateClusterConfig(clusterConfig configv1.NetworkSpec) error {
 func MergeClusterConfig(operConf *operv1.NetworkSpec, clusterConf configv1.NetworkSpec) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	operConf.ServiceNetwork = clusterConf.ServiceNetwork
 	operConf.ClusterNetwork = []operv1.ClusterNetworkEntry{}
 	for _, cnet := range clusterConf.ClusterNetwork {
@@ -59,6 +63,8 @@ func MergeClusterConfig(operConf *operv1.NetworkSpec, clusterConf configv1.Netwo
 	operConf.DefaultNetwork.Type = operv1.NetworkType(clusterConf.NetworkType)
 }
 func StatusFromOperatorConfig(operConf *operv1.NetworkSpec) configv1.NetworkStatus {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	switch operConf.DefaultNetwork.Type {

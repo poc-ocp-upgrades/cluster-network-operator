@@ -14,6 +14,8 @@ import (
 func renderOVNKubernetes(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c := conf.DefaultNetwork.OVNKubernetesConfig
 	objs := []*uns.Unstructured{}
 	data := render.MakeRenderData()
@@ -47,6 +49,8 @@ func renderOVNKubernetes(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.U
 func validateOVNKubernetes(conf *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	out := []error{}
 	if len(conf.ClusterNetwork) == 0 {
 		out = append(out, errors.Errorf("ClusterNetworks cannot be empty"))
@@ -65,6 +69,8 @@ func validateOVNKubernetes(conf *operv1.NetworkSpec) []error {
 func isOVNKubernetesChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pn := prev.DefaultNetwork.OVNKubernetesConfig
 	nn := next.DefaultNetwork.OVNKubernetesConfig
 	if reflect.DeepEqual(pn, nn) {
@@ -73,6 +79,8 @@ func isOVNKubernetesChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	return []error{errors.Errorf("cannot change ovn-kubernetes configuration")}
 }
 func fillOVNKubernetesDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if conf.DefaultNetwork.OVNKubernetesConfig == nil {
@@ -88,6 +96,8 @@ func fillOVNKubernetesDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) 
 	}
 }
 func networkPluginName() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	return "ovn-kubernetes"

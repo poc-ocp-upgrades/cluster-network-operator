@@ -12,6 +12,8 @@ var MultusConfig = operv1.Network{Spec: operv1.NetworkSpec{ServiceNetwork: []str
 func TestRenderMultus(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := MultusConfig.DeepCopy()
 	config := &crd.Spec

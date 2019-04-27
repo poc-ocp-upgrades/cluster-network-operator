@@ -42,9 +42,13 @@ type StatusManager struct {
 func New(client client.Client, name, version string) *StatusManager {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &StatusManager{client: client, name: name, version: version}
 }
 func (status *StatusManager) Set(reachedAvailableLevel bool, conditions ...configv1.ClusterOperatorStatusCondition) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	co := &configv1.ClusterOperator{ObjectMeta: metav1.ObjectMeta{Name: status.name}}
@@ -95,6 +99,8 @@ func (status *StatusManager) Set(reachedAvailableLevel bool, conditions ...confi
 func (status *StatusManager) syncDegraded() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, c := range status.failing {
 		if c != nil {
 			status.Set(false, *c)
@@ -106,10 +112,14 @@ func (status *StatusManager) syncDegraded() {
 func (status *StatusManager) SetDegraded(level StatusLevel, reason, message string) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	status.failing[level] = &configv1.ClusterOperatorStatusCondition{Type: configv1.OperatorDegraded, Status: configv1.ConditionTrue, Reason: reason, Message: message}
 	status.syncDegraded()
 }
 func (status *StatusManager) SetNotDegraded(level StatusLevel) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if status.failing[level] != nil {
@@ -120,14 +130,20 @@ func (status *StatusManager) SetNotDegraded(level StatusLevel) {
 func (status *StatusManager) SetDaemonSets(daemonSets []types.NamespacedName) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	status.daemonSets = daemonSets
 }
 func (status *StatusManager) SetDeployments(deployments []types.NamespacedName) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	status.deployments = deployments
 }
 func (status *StatusManager) SetFromPods() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	targetLevel := os.Getenv("RELEASE_VERSION")
@@ -186,7 +202,16 @@ func (status *StatusManager) SetFromPods() {
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

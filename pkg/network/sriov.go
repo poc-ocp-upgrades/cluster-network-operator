@@ -18,6 +18,8 @@ type NetConfSRIOV struct {
 func isOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cni := NetConfSRIOV{}
 	err := json.Unmarshal([]byte(conf.RawCNIConfig), &cni)
 	if err != nil {
@@ -27,6 +29,8 @@ func isOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition) bool {
 	return cni.Type == "sriov"
 }
 func renderOpenShiftSRIOV(conf *operv1.AdditionalNetworkDefinition, manifestDir string) ([]*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var err error

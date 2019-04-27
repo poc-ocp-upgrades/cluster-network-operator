@@ -8,6 +8,8 @@ import (
 func TestRenderSimple(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	d := MakeRenderData()
 	o1, err := RenderTemplate("testdata/simple.yaml", &d)
@@ -38,6 +40,8 @@ func TestRenderSimple(t *testing.T) {
 func TestRenderMultiple(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	p := "testdata/multiple.yaml"
 	d := MakeRenderData()
@@ -49,6 +53,8 @@ func TestRenderMultiple(t *testing.T) {
 	g.Expect(o[2].GetObjectKind().GroupVersionKind().String()).To(Equal("/v1, Kind=ConfigMap"))
 }
 func TestTemplate(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -72,6 +78,8 @@ func TestTemplate(t *testing.T) {
 	g.Expect(o[0].Object["bar"]).To(Equal("myns"))
 }
 func TestRenderDir(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

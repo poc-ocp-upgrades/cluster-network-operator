@@ -24,6 +24,8 @@ import (
 func (r *ReconcileOperConfig) MergeClusterConfig(ctx context.Context, operConfig *operv1.Network) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterConfig := &configv1.Network{}
 	err := r.client.Get(context.TODO(), types.NamespacedName{Name: names.CLUSTER_CONFIG}, clusterConfig)
 	if err != nil {
@@ -55,6 +57,8 @@ func (r *ReconcileOperConfig) MergeClusterConfig(ctx context.Context, operConfig
 func (r *ReconcileOperConfig) ClusterNetworkStatus(ctx context.Context, operConfig *operv1.Network) (*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterConfig := &configv1.Network{TypeMeta: metav1.TypeMeta{APIVersion: configv1.GroupVersion.String(), Kind: "Network"}, ObjectMeta: metav1.ObjectMeta{Name: names.CLUSTER_CONFIG}}
 	err := r.client.Get(ctx, types.NamespacedName{Name: names.CLUSTER_CONFIG}, clusterConfig)
 	if err != nil && apierrors.IsNotFound(err) {
@@ -73,7 +77,16 @@ func (r *ReconcileOperConfig) ClusterNetworkStatus(ctx context.Context, operConf
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

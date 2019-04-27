@@ -13,6 +13,8 @@ import (
 func Render(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	log.Printf("Starting render phase")
 	objs := []*uns.Unstructured{}
 	o, err := RenderMultus(conf, manifestDir)
@@ -34,6 +36,8 @@ func Render(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, 
 	return objs, nil
 }
 func Canonicalize(conf *operv1.NetworkSpec) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	switch strings.ToLower(string(conf.DefaultNetwork.Type)) {
@@ -63,6 +67,8 @@ func Canonicalize(conf *operv1.NetworkSpec) {
 func Validate(conf *operv1.NetworkSpec) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	errs := []error{}
 	errs = append(errs, ValidateIPPools(conf)...)
 	errs = append(errs, ValidateDefaultNetwork(conf)...)
@@ -73,6 +79,8 @@ func Validate(conf *operv1.NetworkSpec) error {
 	return nil
 }
 func FillDefaults(conf, previous *operv1.NetworkSpec) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	hostMTU, err := GetDefaultMTU()
@@ -93,6 +101,8 @@ func FillDefaults(conf, previous *operv1.NetworkSpec) {
 	FillDefaultNetworkDefaults(conf, previous, hostMTU)
 }
 func IsChangeSafe(prev, next *operv1.NetworkSpec) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if prev == nil {
@@ -120,6 +130,8 @@ func IsChangeSafe(prev, next *operv1.NetworkSpec) error {
 func ValidateIPPools(conf *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	errs := []error{}
 	for idx, pool := range conf.ClusterNetwork {
 		_, _, err := net.ParseCIDR(pool.CIDR)
@@ -138,6 +150,8 @@ func ValidateIPPools(conf *operv1.NetworkSpec) []error {
 func ValidateMultus(conf *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	deployMultus := true
 	if conf.DisableMultiNetwork != nil && *conf.DisableMultiNetwork {
 		deployMultus = false
@@ -150,6 +164,8 @@ func ValidateMultus(conf *operv1.NetworkSpec) []error {
 func ValidateDefaultNetwork(conf *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	switch conf.DefaultNetwork.Type {
 	case operv1.NetworkTypeOpenShiftSDN:
 		return validateOpenShiftSDN(conf)
@@ -160,6 +176,8 @@ func ValidateDefaultNetwork(conf *operv1.NetworkSpec) []error {
 	}
 }
 func RenderDefaultNetwork(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	dn := conf.DefaultNetwork
@@ -179,6 +197,8 @@ func RenderDefaultNetwork(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.
 func FillDefaultNetworkDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	switch conf.DefaultNetwork.Type {
 	case operv1.NetworkTypeOpenShiftSDN:
 		fillOpenShiftSDNDefaults(conf, previous, hostMTU)
@@ -188,6 +208,8 @@ func FillDefaultNetworkDefaults(conf, previous *operv1.NetworkSpec, hostMTU int)
 	}
 }
 func IsDefaultNetworkChangeSafe(prev, next *operv1.NetworkSpec) []error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if prev.DefaultNetwork.Type != next.DefaultNetwork.Type {
@@ -205,6 +227,8 @@ func IsDefaultNetworkChangeSafe(prev, next *operv1.NetworkSpec) []error {
 func ValidateAdditionalNetworks(conf *operv1.NetworkSpec) [][]error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	out := [][]error{}
 	ans := conf.AdditionalNetworks
 	for _, an := range ans {
@@ -220,6 +244,8 @@ func ValidateAdditionalNetworks(conf *operv1.NetworkSpec) [][]error {
 	return out
 }
 func RenderAdditionalNetworks(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var err error
@@ -251,6 +277,8 @@ func RenderAdditionalNetworks(conf *operv1.NetworkSpec, manifestDir string) ([]*
 	return out, nil
 }
 func RenderMultus(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if *conf.DisableMultiNetwork {

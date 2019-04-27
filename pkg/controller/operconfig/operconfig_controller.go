@@ -33,9 +33,13 @@ var ManifestPath = "./bindata"
 func Add(mgr manager.Manager, status *statusmanager.StatusManager) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return add(mgr, newReconciler(mgr, status))
 }
 func newReconciler(mgr manager.Manager, status *statusmanager.StatusManager) *ReconcileOperConfig {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	configv1.Install(mgr.GetScheme())
@@ -43,6 +47,8 @@ func newReconciler(mgr manager.Manager, status *statusmanager.StatusManager) *Re
 	return &ReconcileOperConfig{client: mgr.GetClient(), scheme: mgr.GetScheme(), status: status, podReconciler: newPodReconciler(status)}
 }
 func add(mgr manager.Manager, r *ReconcileOperConfig) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	c, err := controller.New("operconfig-controller", mgr, controller.Options{Reconciler: r})
@@ -78,6 +84,8 @@ type ReconcileOperConfig struct {
 }
 
 func (r *ReconcileOperConfig) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	log.Printf("Reconciling Network.operator.openshift.io %s\n", request.Name)

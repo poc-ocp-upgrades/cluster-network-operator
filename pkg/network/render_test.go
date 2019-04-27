@@ -9,6 +9,8 @@ import (
 func TestIsChangeSafe(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	prev := OpenShiftSDNConfig.Spec.DeepCopy()
 	FillDefaults(prev, nil)
@@ -31,6 +33,8 @@ func TestIsChangeSafe(t *testing.T) {
 	g.Expect(err).To(MatchError(ContainSubstring("cannot change default network type")))
 }
 func TestRenderUnknownNetwork(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

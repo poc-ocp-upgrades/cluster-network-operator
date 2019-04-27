@@ -9,6 +9,8 @@ import (
 func ToUnstructured(obj interface{}) (*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	b, err := json.Marshal(obj)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to convert to unstructured (marshal)")

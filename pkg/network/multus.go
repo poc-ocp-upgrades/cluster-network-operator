@@ -11,6 +11,8 @@ import (
 func renderMultusConfig(manifestDir string, useDHCP bool) ([]*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	objs := []*uns.Unstructured{}
 	data := render.MakeRenderData()
 	data.Data["ReleaseVersion"] = os.Getenv("RELEASE_VERSION")

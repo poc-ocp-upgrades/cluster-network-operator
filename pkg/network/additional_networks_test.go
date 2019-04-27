@@ -12,12 +12,16 @@ var NetworkAttachmentConfigSRIOV = operv1.Network{Spec: operv1.NetworkSpec{Addit
 func TestRenderAdditionalNetworksCRD(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	objs, err := renderAdditionalNetworksCRD(manifestDir)
 	g.Expect(err).NotTo(HaveOccurred())
 	g.Expect(objs).To(HaveLen(1))
 }
 func TestRenderRawCNIConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -29,6 +33,8 @@ func TestRenderRawCNIConfig(t *testing.T) {
 	}
 }
 func TestValidateRaw(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -51,6 +57,8 @@ func TestValidateRaw(t *testing.T) {
 	errExpect("Additional Network Name cannot be nil")
 }
 func TestRenderOpenShiftSRIOV(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

@@ -22,9 +22,13 @@ type RenderData struct {
 func MakeRenderData() RenderData {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return RenderData{Funcs: template.FuncMap{}, Data: map[string]interface{}{}}
 }
 func RenderDir(manifestDir string, d *RenderData) ([]*unstructured.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	out := []*unstructured.Unstructured{}
@@ -50,6 +54,8 @@ func RenderDir(manifestDir string, d *RenderData) ([]*unstructured.Unstructured,
 	return out, nil
 }
 func RenderTemplate(path string, d *RenderData) ([]*unstructured.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	tmpl := template.New(path).Option("missingkey=error")

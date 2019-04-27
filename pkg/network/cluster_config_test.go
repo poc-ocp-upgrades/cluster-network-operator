@@ -12,6 +12,8 @@ var ClusterConfig = configv1.NetworkSpec{ClusterNetwork: []configv1.ClusterNetwo
 func TestValidateClusterConfig(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cc := *ClusterConfig.DeepCopy()
 	err := ValidateClusterConfig(cc)
@@ -42,6 +44,8 @@ func TestValidateClusterConfig(t *testing.T) {
 func TestMergeClusterConfig(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	cc := *ClusterConfig.DeepCopy()
 	oc := operv1.NetworkSpec{}
@@ -49,6 +53,8 @@ func TestMergeClusterConfig(t *testing.T) {
 	g.Expect(oc).To(Equal(operv1.NetworkSpec{ServiceNetwork: []string{"192.168.0.0/20"}, ClusterNetwork: []operv1.ClusterNetworkEntry{{CIDR: "10.0.0.0/22", HostPrefix: 24}, {CIDR: "10.2.0.0/22", HostPrefix: 23}}, DefaultNetwork: operv1.DefaultNetworkDefinition{Type: "None"}}))
 }
 func TestStatusFromConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

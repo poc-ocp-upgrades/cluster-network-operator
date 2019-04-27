@@ -18,10 +18,14 @@ import (
 func init() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	configv1.AddToScheme(scheme.Scheme)
 	appsv1.AddToScheme(scheme.Scheme)
 }
 func getCO(client client.Client, name string) (*configv1.ClusterOperator, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	co := &configv1.ClusterOperator{ObjectMeta: metav1.ObjectMeta{Name: name}}
@@ -29,6 +33,8 @@ func getCO(client client.Client, name string) (*configv1.ClusterOperator, error)
 	return co, err
 }
 func conditionsInclude(oldConditions, newConditions []configv1.ClusterOperatorStatusCondition) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	for _, newCondition := range newConditions {
@@ -55,9 +61,13 @@ func conditionsInclude(oldConditions, newConditions []configv1.ClusterOperatorSt
 func conditionsEqual(oldConditions, newConditions []configv1.ClusterOperatorStatusCondition) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return conditionsInclude(oldConditions, newConditions) && conditionsInclude(newConditions, oldConditions)
 }
 func TestStatusManager_set(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	client := fake.NewFakeClient()
@@ -105,6 +115,8 @@ func TestStatusManager_set(t *testing.T) {
 	}
 }
 func TestStatusManagerSetDegraded(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	client := fake.NewFakeClient()
@@ -166,6 +178,8 @@ func TestStatusManagerSetDegraded(t *testing.T) {
 	}
 }
 func TestStatusManagerSetFromDaemonSets(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	client := fake.NewFakeClient()
@@ -272,6 +286,8 @@ func TestStatusManagerSetFromDaemonSets(t *testing.T) {
 	}
 }
 func TestStatusManagerSetFromPods(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	client := fake.NewFakeClient()

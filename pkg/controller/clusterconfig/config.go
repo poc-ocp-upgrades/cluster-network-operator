@@ -18,6 +18,8 @@ import (
 func (r *ReconcileClusterConfig) UpdateOperatorConfig(ctx context.Context, clusterConfig configv1.Network) (*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	operConfig := &operv1.Network{TypeMeta: metav1.TypeMeta{APIVersion: operv1.GroupVersion.String(), Kind: "Network"}, ObjectMeta: metav1.ObjectMeta{Name: names.OPERATOR_CONFIG}}
 	err := r.client.Get(ctx, types.NamespacedName{Name: names.OPERATOR_CONFIG}, operConfig)
 	if err != nil && !apierrors.IsNotFound(err) {

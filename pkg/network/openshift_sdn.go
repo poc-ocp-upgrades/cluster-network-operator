@@ -18,6 +18,8 @@ import (
 func renderOpenShiftSDN(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Unstructured, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c := conf.DefaultNetwork.OpenShiftSDNConfig
 	objs := []*uns.Unstructured{}
 	data := render.MakeRenderData()
@@ -48,6 +50,8 @@ func renderOpenShiftSDN(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.Un
 func validateOpenShiftSDN(conf *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	out := []error{}
 	if len(conf.ClusterNetwork) == 0 {
 		out = append(out, errors.Errorf("ClusterNetwork cannot be empty"))
@@ -72,6 +76,8 @@ func validateOpenShiftSDN(conf *operv1.NetworkSpec) []error {
 func isOpenShiftSDNChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pn := prev.DefaultNetwork.OpenShiftSDNConfig
 	nn := next.DefaultNetwork.OpenShiftSDNConfig
 	if reflect.DeepEqual(pn, nn) {
@@ -80,6 +86,8 @@ func isOpenShiftSDNChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	return []error{errors.Errorf("cannot change openshift-sdn configuration")}
 }
 func fillOpenShiftSDNDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if conf.DeployKubeProxy == nil {
@@ -123,6 +131,8 @@ func fillOpenShiftSDNDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) {
 func sdnPluginName(n operv1.SDNMode) string {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	switch n {
 	case operv1.SDNModeSubnet:
 		return "redhat/openshift-ovs-subnet"
@@ -134,6 +144,8 @@ func sdnPluginName(n operv1.SDNMode) string {
 	return ""
 }
 func controllerConfig(conf *operv1.NetworkSpec) (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	c := conf.DefaultNetwork.OpenShiftSDNConfig
@@ -151,6 +163,8 @@ func controllerConfig(conf *operv1.NetworkSpec) (string, error) {
 	return string(buf), err
 }
 func nodeConfig(conf *operv1.NetworkSpec) (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	c := conf.DefaultNetwork.OpenShiftSDNConfig

@@ -9,6 +9,8 @@ import (
 func TestAddrPool(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	testcases := []struct {
 		cidr	string
@@ -29,6 +31,8 @@ func TestAddrPool(t *testing.T) {
 func TestNetsOverlap(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	testcases := []struct {
 		cidr1		string
@@ -44,6 +48,8 @@ func TestNetsOverlap(t *testing.T) {
 	}
 }
 func TestLastIP(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

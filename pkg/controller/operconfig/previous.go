@@ -17,6 +17,8 @@ import (
 func GetAppliedConfiguration(ctx context.Context, client k8sclient.Client, name string) (*operv1.NetworkSpec, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cm := &corev1.ConfigMap{}
 	err := client.Get(ctx, types.NamespacedName{Namespace: names.APPLIED_NAMESPACE, Name: names.APPLIED_PREFIX + name}, cm)
 	if err != nil && apierrors.IsNotFound(err) {
@@ -32,6 +34,8 @@ func GetAppliedConfiguration(ctx context.Context, client k8sclient.Client, name 
 	return spec, nil
 }
 func AppliedConfiguration(applied *operv1.Network) (*uns.Unstructured, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	app, err := json.Marshal(applied.Spec)

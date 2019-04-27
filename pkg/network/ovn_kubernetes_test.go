@@ -14,6 +14,8 @@ var manifestDirOvn = "../../bindata"
 func TestRenderOVNKubernetes(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := OVNKubernetesConfig.DeepCopy()
 	config := &crd.Spec
@@ -55,6 +57,8 @@ func TestRenderOVNKubernetes(t *testing.T) {
 func TestFillOVNKubernetesDefaults(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := OVNKubernetesConfig.DeepCopy()
 	conf := &crd.Spec
@@ -65,6 +69,8 @@ func TestFillOVNKubernetesDefaults(t *testing.T) {
 	g.Expect(conf).To(Equal(&expected))
 }
 func TestValidateOVNKubernetes(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -85,6 +91,8 @@ func TestValidateOVNKubernetes(t *testing.T) {
 	errExpect("ClusterNetworks cannot be empty")
 }
 func TestOVNKubernetesIsSafe(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

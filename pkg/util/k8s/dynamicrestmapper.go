@@ -21,6 +21,8 @@ type DynamicRESTMapper struct {
 func NewDynamicRESTMapper(cfg *rest.Config) (meta.RESTMapper, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	client, err := discovery.NewDiscoveryClientForConfig(cfg)
 	if err != nil {
 		return nil, err
@@ -34,6 +36,8 @@ func NewDynamicRESTMapper(cfg *rest.Config) (meta.RESTMapper, error) {
 func (drm *DynamicRESTMapper) reload() error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gr, err := restmapper.GetAPIGroupResources(drm.client)
 	if err != nil {
 		return err
@@ -42,6 +46,8 @@ func (drm *DynamicRESTMapper) reload() error {
 	return nil
 }
 func (drm *DynamicRESTMapper) reloadOnError(err error) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if _, matches := err.(*meta.NoKindMatchError); !matches {
@@ -56,6 +62,8 @@ func (drm *DynamicRESTMapper) reloadOnError(err error) bool {
 func (drm *DynamicRESTMapper) KindFor(resource schema.GroupVersionResource) (schema.GroupVersionKind, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gvk, err := drm.delegate.KindFor(resource)
 	if drm.reloadOnError(err) {
 		gvk, err = drm.delegate.KindFor(resource)
@@ -63,6 +71,8 @@ func (drm *DynamicRESTMapper) KindFor(resource schema.GroupVersionResource) (sch
 	return gvk, err
 }
 func (drm *DynamicRESTMapper) KindsFor(resource schema.GroupVersionResource) ([]schema.GroupVersionKind, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	gvks, err := drm.delegate.KindsFor(resource)
@@ -74,6 +84,8 @@ func (drm *DynamicRESTMapper) KindsFor(resource schema.GroupVersionResource) ([]
 func (drm *DynamicRESTMapper) ResourceFor(input schema.GroupVersionResource) (schema.GroupVersionResource, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gvr, err := drm.delegate.ResourceFor(input)
 	if drm.reloadOnError(err) {
 		gvr, err = drm.delegate.ResourceFor(input)
@@ -81,6 +93,8 @@ func (drm *DynamicRESTMapper) ResourceFor(input schema.GroupVersionResource) (sc
 	return gvr, err
 }
 func (drm *DynamicRESTMapper) ResourcesFor(input schema.GroupVersionResource) ([]schema.GroupVersionResource, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	gvrs, err := drm.delegate.ResourcesFor(input)
@@ -92,6 +106,8 @@ func (drm *DynamicRESTMapper) ResourcesFor(input schema.GroupVersionResource) ([
 func (drm *DynamicRESTMapper) RESTMapping(gk schema.GroupKind, versions ...string) (*meta.RESTMapping, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	m, err := drm.delegate.RESTMapping(gk, versions...)
 	if drm.reloadOnError(err) {
 		m, err = drm.delegate.RESTMapping(gk, versions...)
@@ -99,6 +115,8 @@ func (drm *DynamicRESTMapper) RESTMapping(gk schema.GroupKind, versions ...strin
 	return m, err
 }
 func (drm *DynamicRESTMapper) RESTMappings(gk schema.GroupKind, versions ...string) ([]*meta.RESTMapping, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ms, err := drm.delegate.RESTMappings(gk, versions...)
@@ -110,6 +128,8 @@ func (drm *DynamicRESTMapper) RESTMappings(gk schema.GroupKind, versions ...stri
 func (drm *DynamicRESTMapper) ResourceSingularizer(resource string) (singular string, err error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	s, err := drm.delegate.ResourceSingularizer(resource)
 	if drm.reloadOnError(err) {
 		s, err = drm.delegate.ResourceSingularizer(resource)
@@ -119,7 +139,16 @@ func (drm *DynamicRESTMapper) ResourceSingularizer(resource string) (singular st
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

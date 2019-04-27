@@ -10,6 +10,8 @@ import (
 func newPodReconciler(status *statusmanager.StatusManager) *ReconcilePods {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &ReconcilePods{status: status}
 }
 
@@ -23,9 +25,13 @@ type ReconcilePods struct {
 func (r *ReconcilePods) SetResources(resources []types.NamespacedName) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	r.resources = resources
 }
 func (r *ReconcilePods) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	found := false

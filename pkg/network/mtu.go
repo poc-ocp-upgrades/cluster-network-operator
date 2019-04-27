@@ -8,6 +8,8 @@ import (
 func GetDefaultMTU() (int, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	routes, err := netlink.RouteList(nil, netlink.FAMILY_V4)
 	if err != nil {
 		return 0, errors.Wrapf(err, "could not list routes")

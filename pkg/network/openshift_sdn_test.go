@@ -15,6 +15,8 @@ var manifestDir = "../../bindata"
 func TestRenderOpenShiftSDN(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := OpenShiftSDNConfig.DeepCopy()
 	config := &crd.Spec
@@ -63,6 +65,8 @@ func TestRenderOpenShiftSDN(t *testing.T) {
 func TestFillOpenShiftSDNDefaults(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := OpenShiftSDNConfig.DeepCopy()
 	conf := &crd.Spec
@@ -75,6 +79,8 @@ func TestFillOpenShiftSDNDefaults(t *testing.T) {
 	g.Expect(conf).To(Equal(&expected))
 }
 func TestValidateOpenShiftSDN(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -100,6 +106,8 @@ func TestValidateOpenShiftSDN(t *testing.T) {
 	errExpect("ClusterNetwork cannot be empty")
 }
 func TestProxyArgs(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -148,6 +156,8 @@ func TestProxyArgs(t *testing.T) {
 func TestOpenShiftSDNIsSafe(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	prev := OpenShiftSDNConfig.Spec.DeepCopy()
 	FillDefaults(prev, nil)
@@ -164,6 +174,8 @@ func TestOpenShiftSDNIsSafe(t *testing.T) {
 func TestOpenShiftSDNMultitenant(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := OpenShiftSDNConfig.DeepCopy()
 	config := &crd.Spec
@@ -177,6 +189,8 @@ func TestOpenShiftSDNMultitenant(t *testing.T) {
 	}
 }
 func TestOpenshiftControllerConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
@@ -244,6 +258,8 @@ servingInfo: null
 `))
 }
 func TestOpenshiftNodeConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

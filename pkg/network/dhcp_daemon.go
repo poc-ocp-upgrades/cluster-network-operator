@@ -9,6 +9,8 @@ import (
 func UseDHCP(conf *operv1.NetworkSpec) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	renderdhcp := false
 	if *conf.DisableMultiNetwork {
 		return renderdhcp

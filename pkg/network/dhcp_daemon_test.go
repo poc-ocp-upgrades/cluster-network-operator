@@ -13,6 +13,8 @@ var InvalidDHCPConfig = operv1.Network{Spec: operv1.NetworkSpec{AdditionalNetwor
 func TestRenderWithDHCP(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := DHCPConfig.DeepCopy()
 	config := &crd.Spec
@@ -24,6 +26,8 @@ func TestRenderWithDHCP(t *testing.T) {
 func TestRenderNoDHCP(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)
 	crd := NoDHCPConfig.DeepCopy()
 	config := &crd.Spec
@@ -33,6 +37,8 @@ func TestRenderNoDHCP(t *testing.T) {
 	g.Expect(objs).NotTo(ContainElement(HaveKubernetesID("DaemonSet", "openshift-multus", "dhcp-daemon")))
 }
 func TestRenderInvalidDHCP(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	g := NewGomegaWithT(t)

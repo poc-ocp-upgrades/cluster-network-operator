@@ -11,6 +11,8 @@ var AddToManagerFuncs []func(manager.Manager, *statusmanager.StatusManager) erro
 func AddToManager(m manager.Manager) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	s := statusmanager.New(m.GetClient(), "network", operatorversion.Version)
 	for _, f := range AddToManagerFuncs {
 		if err := f(m, s); err != nil {

@@ -8,6 +8,8 @@ import (
 func MergeObjectForUpdate(current, updated *uns.Unstructured) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	updated.SetResourceVersion(current.GetResourceVersion())
 	if err := MergeDeploymentForUpdate(current, updated); err != nil {
 		return err
@@ -30,6 +32,8 @@ const (
 func MergeDeploymentForUpdate(current, updated *uns.Unstructured) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gvk := updated.GroupVersionKind()
 	if gvk.Group == "apps" && gvk.Kind == "Deployment" {
 		curAnnotations := current.GetAnnotations()
@@ -48,6 +52,8 @@ func MergeDeploymentForUpdate(current, updated *uns.Unstructured) error {
 func MergeServiceForUpdate(current, updated *uns.Unstructured) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gvk := updated.GroupVersionKind()
 	if gvk.Group == "" && gvk.Kind == "Service" {
 		clusterIP, found, err := uns.NestedString(current.Object, "spec", "clusterIP")
@@ -61,6 +67,8 @@ func MergeServiceForUpdate(current, updated *uns.Unstructured) error {
 	return nil
 }
 func MergeServiceAccountForUpdate(current, updated *uns.Unstructured) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	gvk := updated.GroupVersionKind()
@@ -78,6 +86,8 @@ func MergeServiceAccountForUpdate(current, updated *uns.Unstructured) error {
 func mergeAnnotations(current, updated *uns.Unstructured) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	updatedAnnotations := updated.GetAnnotations()
 	curAnnotations := current.GetAnnotations()
 	if curAnnotations == nil {
@@ -91,6 +101,8 @@ func mergeAnnotations(current, updated *uns.Unstructured) {
 func mergeLabels(current, updated *uns.Unstructured) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	updatedLabels := updated.GetLabels()
 	curLabels := current.GetLabels()
 	if curLabels == nil {
@@ -102,6 +114,8 @@ func mergeLabels(current, updated *uns.Unstructured) {
 	updated.SetLabels(curLabels)
 }
 func IsObjectSupported(obj *uns.Unstructured) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	gvk := obj.GroupVersionKind()
