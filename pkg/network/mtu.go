@@ -1,5 +1,3 @@
-// +build linux
-
 package network
 
 import (
@@ -7,10 +5,9 @@ import (
 	"github.com/vishvananda/netlink"
 )
 
-// GetDefaultMTU gets the mtu of the default route.
 func GetDefaultMTU() (int, error) {
-	// Get the interface with the default route
-	// TODO(cdc) handle v6-only nodes
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	routes, err := netlink.RouteList(nil, netlink.FAMILY_V4)
 	if err != nil {
 		return 0, errors.Wrapf(err, "could not list routes")
@@ -18,11 +15,9 @@ func GetDefaultMTU() (int, error) {
 	if len(routes) == 0 {
 		return 0, errors.Errorf("got no routes")
 	}
-
 	const maxMTU = 65536
 	mtu := maxMTU + 1
 	for _, route := range routes {
-		// Skip non-default routes
 		if route.Dst != nil {
 			continue
 		}
@@ -30,7 +25,6 @@ func GetDefaultMTU() (int, error) {
 		if err != nil {
 			return 0, errors.Wrapf(err, "could not retrieve link id %d", route.LinkIndex)
 		}
-
 		newmtu := link.Attrs().MTU
 		if newmtu > 0 && newmtu < mtu {
 			mtu = newmtu
@@ -39,6 +33,5 @@ func GetDefaultMTU() (int, error) {
 	if mtu > maxMTU {
 		return 0, errors.Errorf("unable to determine MTU")
 	}
-
 	return mtu, nil
 }
