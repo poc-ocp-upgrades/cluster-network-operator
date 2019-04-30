@@ -1,5 +1,7 @@
-// +build !linux
-
 package network
 
-func GetDefaultMTU() (int, error) { return 1500, nil }
+func GetDefaultMTU() (int, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	return 1500, nil
+}
